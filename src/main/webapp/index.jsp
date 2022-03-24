@@ -68,13 +68,10 @@
 	<tbody>
 	<% 
 		MongoClient mongoClient = new MongoClient("localhost", 27017);
-		//System.out.println(" Connected -------- ");
 		
 		MongoDatabase db = mongoClient.getDatabase("sample_analytics");
-		//System.out.println(" Database Connected -------- ");
 		
 		MongoCollection<Document> collection = db.getCollection("customers");
-		//System.out.println(" Collection Connected -------- ");
 		
 		FindIterable<Document> iter = collection.find();
 		
@@ -86,7 +83,7 @@
 	%>		
 	    <tr>
 	      <td><%= result.getString("name") %></td>
-	      <td><a href="#" class="link-primary"><%= result.getString("username") %></a></td>
+	      <td><a href="customerDetails.jsp?Id=<%=result.get("_id")%>" class="link-primary"><%= result.getString("username") %></a></td>
 	      <td><%= result.getString("email") %></td>
 	      <td><%= result.get("active") %></td>
 	      <td><a href="#" class="link-primary"><%= result.get("accounts") %></a></td>
@@ -96,10 +93,7 @@
 		}
 	%>  
 	</tbody>
-</table>
-	
-	<!-- https://mdbootstrap.com/docs/b4/jquery/tables/search/ -->
-	
+</table>	
 	<footer class="text-muted py-5">
 	  <div class="container">
 	    <p class="float-end mb-1">

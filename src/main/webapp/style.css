@@ -11,7 +11,4 @@ table.dataTable thead .sorting_desc_disabled:before {
   bottom: .5em;
 }
 
-#dtBasicExample_length{
-	float: right !important;
-}
 
